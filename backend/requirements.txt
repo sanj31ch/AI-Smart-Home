@@ -1,0 +1,23 @@
+#Flask==2.3.3
+#Flask-CORS==4.0.0
+#mysql-connector-python==8.1.0
+#schedule==1.2.0
+#requests==2.31.0
+#SpeechRecognition==3.10.0
+#kivy==2.2.1
+#pyaudio==0.2.11
+#wave==0.0.2
+#numpy==1.24.3
+
+
+
+
+cat > requirements.txt << 'EOF'
+kivy==2.1.0
+requests==2.31.0
+mysql-connector-python==8.1.0
+numpy==1.24.3
+speechrecognition==3.10.0
+pyjnius==1.5.0
+android==1.0
+EOF

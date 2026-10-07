@@ -1,0 +1,157 @@
+#:import colors kivy.utils.get_color_from_hex
+
+<DeviceCard@MDCard>:
+    orientation: 'vertical'
+    size_hint: None, None
+    size: "200dp", "180dp"
+    pos_hint: {"center_x": 0.5}
+    elevation: 10
+    radius: [20,]
+    padding: "20dp"
+    spacing: "10dp"
+
+<SmartHomeApp>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: "10dp"
+        spacing: "10dp"
+        
+        MDTopAppBar:
+            title: "AI Smart Home"
+            elevation: 10
+            left_action_items: [["robot", lambda x: app.show_ml_schedule()]]
+            right_action_items: [["history", lambda x: app.show_history()]]
+        
+        ScrollView:
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20dp"
+                padding: "20dp"
+                
+                MDLabel:
+                    text: "Current Status"
+                    font_style: "H5"
+                    size_hint_y: None
+                    height: "40dp"
+                    halign: "center"
+                
+                GridLayout:
+                    cols: 2
+                    spacing: "20dp"
+                    size_hint_y: None
+                    height: "200dp"
+                    
+                    DeviceCard:
+                        MDIconButton:
+                            id: light_icon
+                            icon: "lightbulb-off"
+                            icon_size: "50dp"
+                            theme_text_color: "Custom"
+                            text_color: colors("#FFD700")
+                            pos_hint: {"center_x": 0.5}
+                            
+                        MDLabel:
+                            text: "Light"
+                            font_style: "H6"
+                            halign: "center"
+                        
+                        MDLabel:
+                            id: light_status
+                            text: "OFF"
+                            font_style: "Subtitle1"
+                            halign: "center"
+                            theme_text_color: "Secondary"
+                    
+                    DeviceCard:
+                        MDIconButton:
+                            id: fan_icon
+                            icon: "fan-off"
+                            icon_size: "50dp"
+                            theme_text_color: "Custom"
+                            text_color: colors("#2196F3")
+                            pos_hint: {"center_x": 0.5}
+                            
+                        MDLabel:
+                            text: "Fan"
+                            font_style: "H6"
+                            halign: "center"
+                        
+                        MDLabel:
+                            id: fan_status
+                            text: "OFF"
+                            font_style: "Subtitle1"
+                            halign: "center"
+                            theme_text_color: "Secondary"
+                
+                DeviceCard:
+                    size_hint: None, None
+                    size: "400dp", "180dp"
+                    
+                    MDIconButton:
+                        id: door_icon
+                        icon: "lock"
+                        icon_size: "50dp"
+                        theme_text_color: "Custom"
+                        text_color: colors("#F44336")
+                        pos_hint: {"center_x": 0.5}
+                        
+                    MDLabel:
+                        text: "Door Lock"
+                        font_style: "H6"
+                        halign: "center"
+                    
+                    MDLabel:
+                        id: door_status
+                        text: "LOCKED"
+                        font_style: "Subtitle1"
+                        halign: "center"
+                        theme_text_color: "Secondary"
+                
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    spacing: "20dp"
+                    size_hint_y: None
+                    height: "200dp"
+                    padding: "10dp"
+                    
+                    MDLabel:
+                        text: "Voice Control"
+                        font_style: "H5"
+                        halign: "center"
+                        size_hint_y: None
+                        height: "40dp"
+                    
+                    MDBoxLayout:
+                        orientation: 'horizontal'
+                        spacing: "10dp"
+                        size_hint_y: None
+                        height: "60dp"
+                        
+                        MDDropDownItem:
+                            id: language_dropdown
+                            text: "English"
+                            pos_hint: {'center_y': 0.5}
+                            size_hint_x: 0.4
+                            on_release: app.show_language_menu()
+                        
+                        MDRaisedButton:
+                            id: mic_button
+                            text: "Tap to Speak"
+                            icon: "microphone"
+                            size_hint_x: 0.6
+                            pos_hint: {'center_y': 0.5}
+                            on_release: app.start_recording()
+                    
+                    MDLabel:
+                        id: voice_feedback
+                        text: ""
+                        halign: "center"
+                        theme_text_color: "Secondary"
+                        size_hint_y: None
+                        height: "40dp"
+        
+        Widget:
+            size_hint_y: None
+            height: "10dp"
